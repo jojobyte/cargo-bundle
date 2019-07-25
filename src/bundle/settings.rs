@@ -182,7 +182,8 @@ impl Settings {
                  name.clone())
             }
         };
-        let binary_path = target_dir.join(&binary_name);
+        let binary_path = target_dir.join(&binary_name).with_extension("exe");
+        let bin_name = format!("{}.{}", binary_name, "exe");
         Ok(Settings {
             package,
             package_type,
@@ -191,7 +192,7 @@ impl Settings {
             is_release,
             project_out_directory: target_dir,
             binary_path,
-            binary_name,
+            binary_name: bin_name,
             bundle_settings,
         })
     }
